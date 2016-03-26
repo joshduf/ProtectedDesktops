@@ -1,0 +1,1 @@
+taskkill /f /t /fi "USERNAME eq Sandbox"
