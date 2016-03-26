@@ -65,7 +65,7 @@ All accounts must have a password.
 
 The user must have logged on to all 3 accounts through the main Windows logon screen at least once.
 
-Make user you can a run as for Account 3. Hold down shit and right click on a simple program like 
+Make user you can a run as for Account 3. Hold down shift and right click on a simple program like 
 
 notepad. Select "Run as different user." Enter the username and password of Account 3. Verify the 
 
