@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProtectedDesktops", "ProtectedDesktops.vcxproj", "{307BB0D9-4FFD-45B9-B9F9-C84743B9F12E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KeepAlive", "KeepAlive\KeepAlive.vcxproj", "{949E44D1-8F8F-4458-B6C3-B67DD40E0DD9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Console", "Console\Console.vcxproj", "{67B60B48-0BB3-448D-9708-0FB80F60430B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesktopSwitcher", "DesktopSwitcher\DesktopSwitcher.vcxproj", "{5A45FEE3-53D0-4CA9-8C6F-7AC5CA20E547}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{307BB0D9-4FFD-45B9-B9F9-C84743B9F12E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{307BB0D9-4FFD-45B9-B9F9-C84743B9F12E}.Debug|Win32.Build.0 = Debug|Win32
+		{307BB0D9-4FFD-45B9-B9F9-C84743B9F12E}.Release|Win32.ActiveCfg = Release|Win32
+		{307BB0D9-4FFD-45B9-B9F9-C84743B9F12E}.Release|Win32.Build.0 = Release|Win32
+		{949E44D1-8F8F-4458-B6C3-B67DD40E0DD9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{949E44D1-8F8F-4458-B6C3-B67DD40E0DD9}.Debug|Win32.Build.0 = Debug|Win32
+		{949E44D1-8F8F-4458-B6C3-B67DD40E0DD9}.Release|Win32.ActiveCfg = Release|Win32
+		{949E44D1-8F8F-4458-B6C3-B67DD40E0DD9}.Release|Win32.Build.0 = Release|Win32
+		{67B60B48-0BB3-448D-9708-0FB80F60430B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{67B60B48-0BB3-448D-9708-0FB80F60430B}.Debug|Win32.Build.0 = Debug|Win32
+		{67B60B48-0BB3-448D-9708-0FB80F60430B}.Release|Win32.ActiveCfg = Release|Win32
+		{67B60B48-0BB3-448D-9708-0FB80F60430B}.Release|Win32.Build.0 = Release|Win32
+		{5A45FEE3-53D0-4CA9-8C6F-7AC5CA20E547}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5A45FEE3-53D0-4CA9-8C6F-7AC5CA20E547}.Debug|Win32.Build.0 = Debug|Win32
+		{5A45FEE3-53D0-4CA9-8C6F-7AC5CA20E547}.Release|Win32.ActiveCfg = Release|Win32
+		{5A45FEE3-53D0-4CA9-8C6F-7AC5CA20E547}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
