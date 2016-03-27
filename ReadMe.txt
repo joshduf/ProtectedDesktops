@@ -10,6 +10,7 @@ Copyright 2016 Joshua DuFault
 Version 0.1
 
 This program is in beta. It has been tested on Windows 7 x64.
+Does not yet work on Windows 8/10. Working on that currently.
 
 
 This program is free software: you can redistribute it and/or modify
