@@ -4,13 +4,16 @@ A program that uses native Windows features to create a fully sandboxed environm
 This program was written as part of an undergraduate research project
 presented at the Honors Transfer Council of California, 26 Mar. 2016.
 
+
 Copyright 2016 Joshua DuFault
 
+Contact: Josh.DuFault@gmail.com
 
-Version 0.1
 
-This program is in beta. It has been tested on Windows 7 x64.
-Does not yet work on Windows 8/10. Working on that currently.
+Version 0.2
+
+This program is in beta. It has been tested on Windows 7 x64, Windows 8 x64, and Windows 10 x64.
+
 
 
 This program is free software: you can redistribute it and/or modify
@@ -103,6 +106,9 @@ The included Settings.ini file has an example.
 
 
 5. Run ProtectedDesktops.exe and enter the requested information when prompted.
+
+
+For Windows 8 & 10: also follow the directions in the Windows 8 & 10 ReadMe.txt in the corresponding folder.
 
 
 The sandbox is now set up. Run DesktopSwitcher.exe to switch between the sandbox and the main desktop. 

@@ -1,0 +1,13 @@
+Version 0.2
+
+
+Added Windows 8 & 10 support.
+
+Added small reliability and speed improvements.
+
+
+
+Version 0.1:
+
+
+Original upload
