@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5A45FEE3-53D0-4CA9-8C6F-7AC5CA20E547}</ProjectGuid>
-    <RootNamespace>DesktopSwitcher</RootNamespace>
+    <ProjectGuid>{341FDF18-5101-4BE7-BEC6-9D27A3D556F0}</ProjectGuid>
+    <RootNamespace>RunMe</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -63,13 +63,11 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <UACUIAccess>false</UACUIAccess>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Common\Sandbox.cpp" />
-    <ClCompile Include="DesktopSwitcher.cpp" />
+    <ClCompile Include="RunMe.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

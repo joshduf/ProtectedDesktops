@@ -25,9 +25,24 @@ along with ProtectedDesktops.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+
+// Using std MIN and MAX definitions rather than windows.h ones
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
+#include "Sandbox.h"
+using namespace std;
+
 // Just here to keep a desktop alive or get a token from
 int wmain()
 {
+
+	cout << "Desktop set. Press any key to continue: ";
+	cin.get();
 
 	return 0;
 }

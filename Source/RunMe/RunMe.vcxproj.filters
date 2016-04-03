@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Console.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Common\Sandbox.cpp">
+    <ClCompile Include="RunMe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

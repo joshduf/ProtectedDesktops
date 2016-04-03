@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Console", "Console\Console.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesktopSwitcher", "DesktopSwitcher\DesktopSwitcher.vcxproj", "{5A45FEE3-53D0-4CA9-8C6F-7AC5CA20E547}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RunMe", "RunMe\RunMe.vcxproj", "{341FDF18-5101-4BE7-BEC6-9D27A3D556F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -33,6 +35,10 @@ Global
 		{5A45FEE3-53D0-4CA9-8C6F-7AC5CA20E547}.Debug|Win32.Build.0 = Debug|Win32
 		{5A45FEE3-53D0-4CA9-8C6F-7AC5CA20E547}.Release|Win32.ActiveCfg = Release|Win32
 		{5A45FEE3-53D0-4CA9-8C6F-7AC5CA20E547}.Release|Win32.Build.0 = Release|Win32
+		{341FDF18-5101-4BE7-BEC6-9D27A3D556F0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{341FDF18-5101-4BE7-BEC6-9D27A3D556F0}.Debug|Win32.Build.0 = Debug|Win32
+		{341FDF18-5101-4BE7-BEC6-9D27A3D556F0}.Release|Win32.ActiveCfg = Release|Win32
+		{341FDF18-5101-4BE7-BEC6-9D27A3D556F0}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -65,6 +65,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <UACUIAccess>false</UACUIAccess>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <SubSystem>
+      </SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

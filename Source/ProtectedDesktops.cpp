@@ -46,8 +46,7 @@ int wmain()
 	if (!createDACL(&adminOnlyDACL))
 		return sandboxFail;
 
-	HDESK defaultHandle = NULL, sandboxHandle = NULL, adminOnlyHandle = NULL;
-	HWINSTA WinSta0Handle = NULL;
+	HDESK adminOnlyHandle = NULL;
 	// Creates desktop with specified DACL
 	// If desktop already exists, gets handle for desktop
 	// Desktop handles needed to access them, no point in continuing without handles
@@ -67,14 +66,11 @@ int wmain()
 	//	on successful completion of createDACL()
 	LocalFree(adminOnlyDACL.lpSecurityDescriptor);
 
+	cout << "Working..." << endl;
+
 	// Launch next part
 	if (launchProcessOnDesktop(CONSOLEAPP, ADMIN, true))
 		sandboxFail = false;
-
-	// Need to give New Console time to launch before closing handle to admin only desktop
-	// In case window is still up after switching back to main
-	cout << "Restarting Windows Explorer. Please wait.";
-	Sleep(10000);
 
 	// Handles not needed
 	CloseDesktop(adminOnlyHandle);

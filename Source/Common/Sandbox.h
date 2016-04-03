@@ -36,14 +36,6 @@ along with ProtectedDesktops.  If not, see <http://www.gnu.org/licenses/>.
 #define _UNICODE
 #endif
 
-// This program should work on Vista and up
-// The method of restarting explorer.exe used here began with Vista
-// Also, this program provides no protection against unpatched operating system vulnerabilities
-//	present in earlier versions of Windows
-#ifndef _WIN32_WINNT 
-#define _WIN32_WINNT _WIN32_WINNT_VISTA 
-#endif
-
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -64,7 +56,7 @@ const std::wstring SETTINGSFILE = L"settings.ini";
 bool getSettings(std::wstring &mainUser, std::wstring &sandboxUser, std::wstring &fileManager);
 
 bool createDACL(SECURITY_ATTRIBUTES *newDACL);
-bool createDACL(const std::wstring &userToAllow, SECURITY_ATTRIBUTES *denyDACL, const std::wstring &userToDeny);
+bool createDACL(const std::wstring &userToAllow, SECURITY_ATTRIBUTES *denyDACL, const std::wstring &userToDeny, bool isDesktop = false);
 bool setDACL(SECURITY_ATTRIBUTES newDACL, HANDLE objectHandle, SE_OBJECT_TYPE objectType);
 bool setDefaultDACL(SECURITY_ATTRIBUTES newDACL, HANDLE &tokenHandle);
 bool usernameToSIDString(const std::wstring &username, std::wstring &userSIDString);

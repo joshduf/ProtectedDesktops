@@ -55,8 +55,8 @@ int wmain()
 	// Creates custom DACL
 	// Sets owner, denies, and allows
 	// Sandbox relies on DACLs, no point in continuing if they're not usable
-	if (!createDACL(userMain, &defaultDACL, userSandbox)
-		|| !createDACL(userSandbox, &sandboxDACL, userMain))
+	if (!createDACL(userMain, &defaultDACL, userSandbox, true)
+		|| !createDACL(userSandbox, &sandboxDACL, userMain, true))
 //		|| !createDACL(userMain, &WinSta0DACL, userSandbox))
 		return sandboxFail;
 

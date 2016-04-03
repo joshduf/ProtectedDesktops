@@ -14,9 +14,6 @@
     <ClCompile Include="..\Common\Sandbox.cpp" />
     <ClCompile Include="Console.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\Common\Sandbox.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{67B60B48-0BB3-448D-9708-0FB80F60430B}</ProjectGuid>
     <RootNamespace>Console</RootNamespace>

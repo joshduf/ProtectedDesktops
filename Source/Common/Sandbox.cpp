@@ -85,7 +85,7 @@ bool createDACL(SECURITY_ATTRIBUTES *newDACL)
 // Adds deny ACE entry for specified user
 // Returns true on successfull creation of security descriptor
 // Returns false otherwise
-bool createDACL(const wstring &userToAllow, SECURITY_ATTRIBUTES *newDACL, const wstring &userToDeny)
+bool createDACL(const wstring &userToAllow, SECURITY_ATTRIBUTES *newDACL, const wstring &userToDeny, bool isDesktop)
 {
 	bool createDACLWorked = false;
 
@@ -104,6 +104,10 @@ bool createDACL(const wstring &userToAllow, SECURITY_ATTRIBUTES *newDACL, const 
 	// Gives read & execute access to userToAllow
 	wstring newACE;
 	newACE = L"D:(D;OICI;GA;;;" + userDenySIDString + L")(A;OICI;GA;;;SY)(A;OICI;GA;;;BA)(A;OICI;GA;;;" + userallowSIDString + L")";
+
+	// Gives desktop access to Modern apps
+	if (isDesktop)
+		newACE += L"(A;OICI;GA;;;S-1-15-2-1)";
 
 	// createDACLWorked is true iff denyDACL is successfully set
 	if (ConvertStringSecurityDescriptorToSecurityDescriptor(newACE.c_str(), SDDL_REVISION_1, &(newDACL->lpSecurityDescriptor), NULL))
@@ -243,6 +247,9 @@ bool launchProcessOnDesktop(wstring process, wstring desktop, bool resume)
 	if (resume)
 		ResumeThread(processInfo.hThread);
 
+	// Give console.exe time to fully start up
+	WaitForSingleObject(processInfo.hProcess, 60000);
+
 	return launchProcessOnDesktop;
 }
 
@@ -287,21 +294,46 @@ bool launchFileManager(const wstring &userToAllow, const wstring &userToDeny, co
 	{
 		toStart = L"C:\\Windows\\Explorer.exe";
 
-		PostMessage(FindWindow(L"Shell_TrayWnd", NULL), WM_USER + 436, 0, 0);
+		// Get a handle to explorer.exe
+		// Return on failure
+		DWORD explorerID;
+		HWND explorerWindow = FindWindow(L"Shell_TrayWnd", NULL);
+		if (explorerWindow == NULL)
+			return launchFileManagerWorked;
+		GetWindowThreadProcessId(explorerWindow, &explorerID);
+		HANDLE explorerHANDLE = OpenProcess(PROCESS_ALL_ACCESS, FALSE, explorerID);
+		if (explorerHANDLE == NULL)
+			return launchFileManagerWorked;
 
-		// Give shell time to restart
-		Sleep(5000);
+		// Try to close Explorer.exe using Window message exit code
+		//	If that fails, terminate process
+		if (!PostMessage(explorerWindow, WM_USER + 436, 0, 0))
+			TerminateProcess(explorerHANDLE, 0);
 
-		if (!CreateProcessWithLogonW(userToAllow.c_str(), NULL, sandboxUserCred.c_str(), LOGON_WITH_PROFILE, KEEPALIVE.c_str(), NULL, CREATE_SUSPENDED, NULL, NULL, &launcherSettings, &launcherInfo))
+		// Give shell time to exit fully
+		// WaitForSingleObject() isn't working correctly with explorer.exe on Windows 10
+		DWORD exitCode;
+		int count = 0;
+		do
+		{
+			Sleep(500);
+			GetExitCodeProcess(explorerHANDLE, &exitCode);
+			count++;
+		} while (exitCode == STILL_ACTIVE && count < 10);
+
+		if (!CreateProcessWithLogonW(userToAllow.c_str(), NULL, sandboxUserCred.c_str(), LOGON_WITH_PROFILE, KEEPALIVE.c_str(), NULL, CREATE_NEW_CONSOLE, NULL, NULL, &launcherSettings, &launcherInfo))
 			return launchFileManagerWorked;
 	}
 	else
 	{
 		toStart = fileManager;
 
-		if (!CreateProcessWithLogonW(userToAllow.c_str(), NULL, sandboxUserCred.c_str(), LOGON_WITH_PROFILE, KEEPALIVE.c_str(), NULL, CREATE_SUSPENDED, NULL, NULL, &launcherSettings, &launcherInfo))
+		if (!CreateProcessWithLogonW(userToAllow.c_str(), NULL, sandboxUserCred.c_str(), LOGON_WITH_PROFILE, KEEPALIVE.c_str(), NULL, CREATE_NEW_CONSOLE, NULL, NULL, &launcherSettings, &launcherInfo))
 			return launchFileManagerWorked;
 	}
+
+	// Gives the keepAlive program time to start fully
+	WaitForSingleObject(launcherInfo.hProcess, 5000);
 
 	// Code to impersonate using LogonUser() left for documentation
 	// Creates new Logon SID
